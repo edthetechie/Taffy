@@ -43,7 +43,7 @@
 														<span class="verb label label-success">#ucase(listFirst(local.verb,'|'))#</span>
 													</cfif>
 												</cfloop>
-												<code style="float:right; margin-top: -15px; display: inline-block;">#local.currentResource.srcUri#</code>
+												<code style="float:right; margin-top: -18px; display: inline-block;">#local.currentResource.srcUri#</code>
 											</h4>
 										</div>
 										<div id="#local.currentResource.beanName#">
@@ -134,7 +134,7 @@
 					</div>
 					<div class="col-md-3" role="complementary">
 						<nav class="affix-top" data-spy="affix">
-							<h4>Endpoints</h4>
+							<h4>Resources</h4>
 							<ul class="nav bs-docs-sidenav">
 								<cfloop from="1" to="#arrayLen(application._taffy.uriMatchOrder)#" index="local.resource">
 									<cfset local.currentResource = application._taffy.endpoints[application._taffy.uriMatchOrder[local.resource]] />
