@@ -1,0 +1,35 @@
+body {
+	padding-bottom: 150px;	
+}
+
+#resources .verb {
+    float: right;
+    margin-left: 5px;
+    margin-top: -18px;
+    padding-top: 4px;
+}
+.label-success {
+    background-color: #5cb85c;
+}
+.label {
+    border-radius: 0.25em;
+    color: #fff;
+    display: inline;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0.2em 0.6em 0.3em;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+#resources .accordion-toggle {
+    display: block;
+    margin: -10px -15px;
+    padding: 10px 15px;
+}
+
+.top-mast {
+	margin-bottom: 10px;
+}
