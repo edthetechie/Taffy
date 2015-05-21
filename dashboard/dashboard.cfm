@@ -1,12 +1,18 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Taffy Dashboard</title>
+	<title>Shaping Tomorrow API Dashboard</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<style>
 		<cfinclude template="dash.css" />
 		<cfinclude template="highlight-github.min.css" />
 	</style>
+	<cfif IsDefined("application._taffy.settings.bootstraptheme")>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/#application._taffy.settings.bootstraptheme#/bootstrap.min.css">
+	<cfelse>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cosmo/bootstrap.min.css">
+	</cfif>
+	
 </head>
 <body>
 	<script>
@@ -216,7 +222,7 @@
 				<cfoutput>
 					<cfloop from="1" to="#arrayLen(application._taffy.uriMatchOrder)#" index="local.resource">
 						<cfset local.currentResource = application._taffy.endpoints[application._taffy.uriMatchOrder[local.resource]] />
-						<cfset local.resourceHTTPID = rereplace(local.currentResource.beanName & "_" & hash(local.currentResource.srcURI), "[^0-9a-zA-Z_]", "_", "all") />
+						<cfset local.resourceHTTPID = local.currentResource.beanName & "_" & hash(local.currentResource.srcURI) />
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
