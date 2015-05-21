@@ -1,5 +1,7 @@
 body {
-	padding-bottom: 150px;	
+	padding-bottom: 350px;
+	height: 100%;	
+	position: relative;
 }
 
 #resources .verb {
