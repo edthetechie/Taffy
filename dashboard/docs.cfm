@@ -1,14 +1,18 @@
 <cfoutput>
-	<!DOCTYPE HTML>
+	<!DOCTYPE html>
 	<html>
 		<head>
 
 			<title>#application._taffy.settings.docs.APIName# Documentation - #application._taffy.settings.docs.APIversion#</title>
 
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+			<cfif IsDefined("application._taffy.settings.bootstraptheme")>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/#application._taffy.settings.bootstraptheme#/bootstrap.min.css">
+			<cfelse>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cosmo/bootstrap.min.css">
+			</cfif>
+				
 			<style type="text/css">
 				<cfinclude template="custom.css">
 			</style>
@@ -30,7 +34,7 @@
 					
 								<cfloop from="1" to="#arrayLen(application._taffy.uriMatchOrder)#" index="local.resource">
 									<cfset local.currentResource = application._taffy.endpoints[application._taffy.uriMatchOrder[local.resource]] />
-									<div class="panel panel-default" id="#local.resource#">
+									<div class="panel panel-default" id="apiNav#local.currentResource.beanName#">
 										<div class="panel-heading">
 											
 											<h4 class="panel-title">
@@ -131,15 +135,15 @@
 							<div class="alert alert-info">Resources are listed in matching order. From top to bottom, the first URI to match the request is used.</div>
 						</div><!-- /resources -->
 					</div>
-					<div class="col-md-3" id="apiNav">
-						<nav class="affix-top hidden-xs hidden-sm" data-spy="affix">
+					<div class="col-md-3 affix-top hidden-xs hidden-sm" id="apiNav">
+						<nav class="" data-spy="affix">
 							<h4>Resources</h4>
-							<div id="apiNav" data-spy="scroll" data-target="##apiNav">
+							<div id="apiNav" data-target="##apiNav">
 								<ul class="nav nav-pills nav-stacked apiNav">
 									<cfloop from="1" to="#arrayLen(application._taffy.uriMatchOrder)#" index="local.resource">
 										<cfset local.currentResource = application._taffy.endpoints[application._taffy.uriMatchOrder[local.resource]] />
 										<li>
-											<a href="###local.resource#" class="text-capitalize">
+											<a href="##apiNav#local.currentResource.beanName#" class="text-capitalize">
 												#local.currentResource.beanName#
 											</a>
 										</li>
@@ -157,8 +161,8 @@
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 			<script type="text/javascript">
 				$(function() {                
-                     $('body').scrollspy({ target: '##apiNav' })
-                    });
+					$("body").scrollspy()
+				});
 			</script>
 		</body>
 	</html>
