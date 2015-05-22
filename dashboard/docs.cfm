@@ -77,6 +77,7 @@
 														<cfset local.param = local.func.parameters[local.p] />
 															<div class="row">
 																<div class="col-md-11 col-md-offset-1">
+																	<strong>#local.param.name#</strong> - 
 																	<cfif not structKeyExists(local.param, 'required') or not local.param.required>
 																		optional
 																	<cfelse>
@@ -85,7 +86,6 @@
 																	<cfif structKeyExists(local.param, "type")>
 																		#local.param.type#
 																	</cfif>
-																	<strong>#local.param.name#</strong>
 																	<cfif structKeyExists(local.param, "default")>
 																		<cfif local.param.default eq "">
 																			(default: "")
@@ -96,7 +96,7 @@
 																		<!--- no default value --->
 																	</cfif>
 																	<cfif structKeyExists(local.param, "hint")>
-																		<br/><span class="doc">#local.param.hint#</span>
+																		<br/><span class="doc"><em>#local.param.hint#</em></span>
 																	</cfif>
 																</div>
 															</div>
